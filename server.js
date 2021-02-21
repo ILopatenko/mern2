@@ -6,6 +6,8 @@ const connectDB = require('./config/db.js');
 const app = express();
 //Calling a function to connect to DB
 connectDB();
+//Init Middleware
+app.use(express.json({ extended: false }));
 //Set up a port for server
 const PORT = process.env.PORT || 5000;
 //Set up a server to listen a port. Log to console string with information about port
