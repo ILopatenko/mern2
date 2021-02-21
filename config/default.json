@@ -1,0 +1,3 @@
+{
+  "mongoURI": "mongodb+srv://new-test-user:mern-mongo-test@devconnector.spns4.mongodb.net/<dbname>?retryWrites=true&w=majority"
+}

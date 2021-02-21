@@ -1,8 +1,14 @@
 //Import EXPRESS
 const express = require('express');
 
+//Import a function to connect to DB
+const connectDB = require('./config/db.js');
+
 //Create a back-end server - APP
 const app = express();
+
+//Calling a function to connect to DB
+connectDB();
 
 //Set up a port for server
 const PORT = process.env.PORT || 5000;
