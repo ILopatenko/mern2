@@ -4,11 +4,17 @@ const express = require('express');
 //Create a router from express ROUTER
 const router = express.Router();
 
+//Import CONFIG
+const config = require('config');
+
 //Import GRAVATAR
 const gravatar = require('gravatar');
 
 //Import BCRYPT
 const bcrypt = require('bcryptjs');
+
+//Import JWT
+const jwt = require('jsonwebtoken');
 
 //Import User model (schema)
 const User = require('../../models/User');
@@ -55,8 +61,24 @@ router.post(
       user.password = await bcrypt.hash(password, salt);
       //SAVE a new USER
       await user.save();
-      //Return jsonwebtoken - TODO!!!
-      res.send('USER is REGISTERED');
+      //Return jsonwebtoken
+      const payload = {
+        user: {
+          id: user.id,
+        },
+      };
+      jwt.sign(
+        payload,
+        config.get('jwtSecret'),
+        { expiresIn: 360000 },
+        (error, token) => {
+          if (error) {
+            throw error;
+          } else {
+            res.json({ token });
+          }
+        }
+      );
     } catch (err) {
       console.error(err.message);
       res.status(500).send('Server ERROR !!!');
