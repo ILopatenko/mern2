@@ -22,6 +22,7 @@ const User = require('../../models/User');
 //Import check and validationResult
 const { check, validationResult } = require('express-validator');
 
+//=============== R E G I S T E R   U S E R ==========================================
 //@description: route for REGISTER (create) a new USER
 //@route information: POST => api/users
 //@access: PUBLIC
@@ -85,4 +86,5 @@ router.post(
     }
   }
 );
+//============================================================================
 module.exports = router;
