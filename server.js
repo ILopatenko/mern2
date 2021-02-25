@@ -10,6 +10,9 @@ const app = express();
 //Create a CONNECTION to DATABASE
 connectDB();
 
+//Import MIDDLEWARE for work with body of REQUEST (bodyparser)
+app.use(express.json({ extended: false }));
+
 //Create MAIN routes
 app.use("/api/user", require("./routes/api/user"));
 app.use("/api/profile", require("./routes/api/profile"));

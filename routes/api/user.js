@@ -4,12 +4,10 @@ const express = require("express");
 //Import EXPRESS ROUTER
 const router = express.Router();
 
-router.get("/login", (req, res) => {
-  res.send("hello from api/user/login");
-});
+//////////////// START_ROUT /////////////////
 
-router.get("/", (req, res) => {
-  res.send("hello from api/user");
-});
+router.use("/registration", require("./user/registration"));
+router.use("/login", require("./user/registration"));
+////////////////// END_ROUT /////////////////
 
 module.exports = router;
