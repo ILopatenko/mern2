@@ -10,8 +10,11 @@ const app = express();
 //Create a CONNECTION to DATABASE
 connectDB();
 
-//Create a TEST ROUTE (for GET request to root folder '/')
-app.get("/", (req, res) => res.send("Hello from TEST ROUTE of our API!"));
+//Create MAIN routes
+app.use("/api/user", require("./routes/api/user"));
+app.use("/api/profile", require("./routes/api/profile"));
+app.use("/api/post", require("./routes/api/post"));
+app.use("/api/auth", require("./routes/api/auth"));
 
 //Create a variable to store port for server
 const PORT = process.env.PORT || 5000;
