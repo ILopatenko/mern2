@@ -10,6 +10,11 @@ const User = require("../../../models/User");
 const gravatar = require("gravatar");
 //Import BCRYPT
 const bcrypt = require("bcryptjs");
+//Import JWT
+const jwt = require("jsonwebtoken");
+//Import CONFIG
+const config = require("config");
+
 router.post(
   "/",
   [
@@ -53,8 +58,20 @@ router.post(
       user.password = await bcrypt.hash(password, salt);
       //SAVE new USER
       await user.save();
-      //Return a message
-      res.send("User was registered");
+      //Create a payload for generate a JWT
+      const payload = {
+        user: { id: user.id },
+      };
+      //Generate a TOKEN
+      jwt.sign(
+        payload,
+        config.get("secretForJWT"),
+        { expiresIn: 360000 },
+        (err, token) => {
+          if (err) throw err;
+          res.json({ token });
+        }
+      );
     } catch (error) {
       console.error(error.message);
       res.status(500).send("Server error!");
