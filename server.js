@@ -14,7 +14,7 @@ connectDB();
 app.use(express.json({ extended: false }));
 
 //Create MAIN routes
-app.use("/api/user", require("./routes/api/user"));
+app.use("/api/user", require("./routes/api/mainUserRoute"));
 app.use("/api/profile", require("./routes/api/profile"));
 app.use("/api/post", require("./routes/api/post"));
 app.use("/api/auth", require("./routes/api/auth"));
