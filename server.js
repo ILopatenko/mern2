@@ -15,6 +15,7 @@ app.use(express.json({ extended: false }));
 
 //Create MAIN routes
 app.use('/api/user', require('./routes/api/mainUserRoute'));
+app.use('/api/profile', require('./routes/api/mainProfileRoute'));
 
 //Create a variable to store port for server
 const PORT = process.env.PORT || 5000;
