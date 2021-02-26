@@ -1,8 +1,8 @@
 //Import EXPRESS
-const express = require("express");
+const express = require('express');
 
 //Import logic to CONNECT to a DATABASE
-const connectDB = require("./config/db");
+const connectDB = require('./config/db');
 
 //Initialize a main APP variable
 const app = express();
@@ -14,10 +14,7 @@ connectDB();
 app.use(express.json({ extended: false }));
 
 //Create MAIN routes
-app.use("/api/user", require("./routes/api/mainUserRoute"));
-app.use("/api/profile", require("./routes/api/profile"));
-app.use("/api/post", require("./routes/api/post"));
-app.use("/api/auth", require("./routes/api/auth"));
+app.use('/api/user', require('./routes/api/mainUserRoute'));
 
 //Create a variable to store port for server
 const PORT = process.env.PORT || 5000;
