@@ -17,7 +17,7 @@ module.exports = (req, res, next) => {
   try {
     // decode the TOKEN
     const decoded = jwt.verify(token, config.get('secretForJWT'));
-    //Change USER at REQUEST to decoded USER (from TOKEN)
+    //Add USER ID from JWT to REQUEST object as a new key with value as an array {id: 'xXxXxX'}
     req.user = decoded.user;
     //make a signal that a function has finished work
     next();
