@@ -1,4 +1,3 @@
-//Import mongoose mongoose
 //Import MONGOOSE
 const mongoose = require('mongoose');
 //Create a PROFILE model (schema)
