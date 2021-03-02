@@ -8,7 +8,6 @@ const Profile = require('../../../models/Profile');
 const auth = require('../../../middleware/auth');
 //Import check and validationResult to work with data from REQUEST
 const { check, validationResult } = require('express-validator');
-
 //After REQUEST to this route server will do auth MIDLEWARE (private route)
 router.put(
   '/',
