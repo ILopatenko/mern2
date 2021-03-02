@@ -4,8 +4,6 @@ const express = require('express');
 const router = express.Router();
 //Import a MIDDLEWARE function
 const auth = require('../../../middleware/auth');
-//Import User model
-const User = require('../../../models/User');
 //Import Profile model
 const Profile = require('../../../models/Profile');
 
