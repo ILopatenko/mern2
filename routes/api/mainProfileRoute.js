@@ -9,4 +9,6 @@ router.use('/user', require('./profile/getByID'));
 router.use('/del', require('./profile/deleteUser'));
 router.use('/exp', require('./profile/addExperience'));
 router.use('/delexp', require('./profile/deleteExperience'));
+router.use('/edu', require('./profile/addEducation'));
+router.use('/deledu', require('./profile/deleteEducation'));
 module.exports = router;
