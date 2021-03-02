@@ -25,8 +25,8 @@ const ProfileSchema = new mongoose.Schema({
       description: { type: String },
     },
   ],
-  //Education
-  experience: [
+  //Degree
+  degree: [
     {
       school: { type: String, required: true },
       degree: { type: String, required: true },

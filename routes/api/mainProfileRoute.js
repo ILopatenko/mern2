@@ -7,4 +7,5 @@ router.use('/cu', require('./profile/createUpdate'));
 router.use('/all', require('./profile/getAll'));
 router.use('/user', require('./profile/getByID'));
 router.use('/del', require('./profile/deleteUser'));
+router.use('/exp', require('./profile/addExperience'));
 module.exports = router;
