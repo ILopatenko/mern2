@@ -5,7 +5,6 @@ const router = express.Router();
 //Import Profile model
 const Profile = require('../../../models/Profile');
 
-//After REQUEST to this route server will do auth MIDLEWARE (private route)
 router.get('/:user_id', async (req, res) => {
   try {
     //create a variable for store/work with a profile.
