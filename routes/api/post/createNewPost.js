@@ -14,12 +14,9 @@ router.post(
   '/',
   [auth, [check('text', 'Text is required').not().isEmpty()]],
   async (req, res) => {
-    try {
-    } catch (error) {
-      const errors = validationResult(req);
-      if (!errors.isEmpty())
-        return res.status(400).json({ errors: errors.array() });
-    }
+    const errors = validationResult(req);
+    if (!errors.isEmpty())
+      return res.status(400).json({ errors: errors.array() });
     try {
       //Try to find USER with ID from request in DATABASE
       const user = await User.findById(req.user.id).select('-password');

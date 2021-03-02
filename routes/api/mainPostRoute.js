@@ -6,4 +6,5 @@ router.use('/new', require('./post/createNewPost'));
 router.use('/all', require('./post/getAllPosts'));
 router.use('/', require('./post/getORDelPostByID'));
 router.use('/like', require('./post/likeUnlike'));
+router.use('/comment', require('./post/addRemoveComment'));
 module.exports = router;
