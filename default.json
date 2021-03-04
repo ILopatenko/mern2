@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb+srv://new-test-user:mern-mongo-test@devconnector.spns4.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+  "secretForJWT": "mySuper$ecret4JWT!"
+}
