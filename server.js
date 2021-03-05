@@ -8,6 +8,7 @@ const app = express();
 connectDB();
 //Import MIDDLEWARE for work with body of REQUEST (bodyparser)
 app.use(express.json({ extended: false }));
+
 //Create MAIN routes
 app.use('/api/user', require('./routes/api/mainUserRoute'));
 app.use('/api/profile', require('./routes/api/mainProfileRoute'));

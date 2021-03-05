@@ -1,6 +1,9 @@
 //Import REACT, Fragment and useState() hook
 import React, { Fragment, useState } from 'react';
 
+//Import LINK
+import { Link } from 'react-router-dom';
+
 //Create a COMPONENT Register
 const Register = () => {
   //Create a useState() hook
@@ -20,14 +23,14 @@ const Register = () => {
   };
 
   //Create a function to submitting new data
-  const onSubmitHandler = (e) => {
+  const onSubmitHandler = async (e) => {
     //Will not sent a default value
     e.preventDefault();
     //Check if password and confirm password are the same
     if (password !== password2) {
       console.log('Do not match');
     } else {
-      console.log(formData);
+      console.log('match!');
     }
   };
 
@@ -98,7 +101,7 @@ const Register = () => {
       </form>
 
       <p className='my-1'>
-        Already have an account? <a href='login.html'>Sign In</a>
+        Already have an account? <Link to='/login'>Sign In</Link>
       </p>
     </Fragment>
   );
