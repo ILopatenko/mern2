@@ -8,6 +8,10 @@ const postRoute = require('./routes/api/post');
 const authRoute = require('./routes/api/auth');
 
 const app = express();
+
+//Init a built in Middleware (ex. BodyParser)
+app.use(express.json({ extended: false }));
+
 connectToDB();
 
 app.get('/', (req, res) => res.send('API is running'));
