@@ -43,7 +43,7 @@ router.post(
       if (user) {
         //if user with this email was found in database - throw an error
         return res.status(400).json({
-          errors: [{ msg: 'Useralready exists! Try to use another email!' }],
+          errors: [{ msg: 'User already exists! Try to use another email!' }],
         });
       }
       //2 - Get a gravatar for this email
