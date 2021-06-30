@@ -132,7 +132,7 @@ router.get('/user/:userID', async (req, res) => {
 });
 //--------------END------------------------------------
 
-//@route      DELETE api/profile/me
+//@route      DELETE api/profile
 //@desc       Delete user (User, Profile and Posts)
 //@access     private
 router.delete('/', auth, async (req, res) => {
@@ -149,4 +149,46 @@ router.delete('/', auth, async (req, res) => {
   }
 });
 //--------------END------------------------------------
+
+//@route      PUT api/profile
+//@desc       ADD profile EXPERIENCE
+//@access     private
+router.put(
+  '/experience',
+  [
+    auth,
+    [
+      body('title').not().isEmpty().withMessage('Title is required'),
+      body('company').not().isEmpty().withMessage('Skills are required'),
+      body('from').not().isEmpty().withMessage('From date is required'),
+    ],
+  ],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty())
+      return res.status(400).json({ errors: errors.array() });
+    const { title, company, location, from, to, current, description } =
+      req.body;
+    const newExp = {
+      title,
+      company,
+      location,
+      from,
+      to,
+      current,
+      description,
+    };
+    try {
+      const profile = await Profile.findOne({ user: req.user.id });
+      profile.experience.unshift(newExp);
+      await profile.save();
+      res.json(profile);
+    } catch (error) {
+      console.error(error.message);
+      res.status(500).send('Server ERROR!');
+    }
+  }
+);
+//--------------END------------------------------------
+
 module.exports = router;
