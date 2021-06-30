@@ -23,6 +23,7 @@ router.get('/me', auth, async (req, res) => {
     res.status(500).send('Server ERROR!');
   }
 });
+//--------------END------------------------------------
 
 //@route      POST api/profile
 //@desc       Create/Update user's profile
@@ -92,6 +93,7 @@ router.post(
     }
   }
 );
+//--------------END------------------------------------
 
 //@route      GET api/profile
 //@desc       Get all the profiles
@@ -105,6 +107,7 @@ router.get('/', async (req, res) => {
     res.status(500).send('Server ERROR!');
   }
 });
+//--------------END------------------------------------
 
 //@route      GET api/profile/user/:userID
 //@desc       Get a profile by user ID
@@ -127,4 +130,23 @@ router.get('/user/:userID', async (req, res) => {
     res.status(500).send('Server ERROR!');
   }
 });
+//--------------END------------------------------------
+
+//@route      DELETE api/profile/me
+//@desc       Delete user (User, Profile and Posts)
+//@access     private
+router.delete('/', auth, async (req, res) => {
+  try {
+    //!!!@TODO!!! - REMOVE all the user's posts!!!
+    //REMOVE a Profile
+    await Profile.findOneAndDelete({ user: req.user.id });
+    //REMOVE a User
+    await User.findOneAndDelete({ _id: req.user.id });
+    res.json({ msg: 'User was deleted!' });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send('Server ERROR!');
+  }
+});
+//--------------END------------------------------------
 module.exports = router;
